@@ -1,21 +1,32 @@
-## Laravel PHP Framework
+#Intro to MVC using Laravel#
+Created by Mark Johnson
 
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/version.png)](https://packagist.org/packages/laravel/framework) [![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.png)](https://packagist.org/packages/laravel/framework) [![Build Status](https://travis-ci.org/laravel/framework.png)](https://travis-ci.org/laravel/framework)
+##Download using Git
+1. Create a new sub-directory on your PHP5.4/MySQL server. If you dont have a web host and you have a unix machine (including Mac), local development works great using Laravel's built-in `php artisan serve` function. Learn more at [http://laravel.com/docs/artisan](http://laravel.com/docs/).
+2. In your mac/unix terminal enter:  
+ `git clone https://github.com/marklj/to-do-laravel.git`
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, and caching.
+##Download manually
+1. Navigate yoyr browser to https://github.com/marklj/to-do-laravel
+2. Click the zip link
+3. Save to a folder on your local machine or PHP/MySQL server
 
-Laravel aims to make the development process a pleasing one for the developer without sacrificing application functionality. Happy developers make the best code. To this end, we've attempted to combine the very best of what we have seen in other web frameworks, including frameworks implemented in other languages, such as Ruby on Rails, ASP.NET MVC, and Sinatra.
+##Requirements
+* PHP 5.4
+* Composer (http://getcomposer.org)
+* MySQL Server
 
-Laravel is accessible, yet powerful, providing powerful tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
+##Installation
+1. Run `composer update` in your project root (or `composer.phar update` if Composer is not installed globally).
+2. Create a new MySQL database
+3. Open `app/config/database.php` and edit the MySQL host and database settings as needed.
+4. Run database migrations in your termanal using `php artisan migrate`
+5. Start your server using the termanal command `php artisan serve`
 
-## Official Documentation
+##Use this to LEARN
+Learn how to code in an MVC environment by editing and extending this little app. Try one of the following to get started:
 
-Documentation for the entire framework can be found on the [Laravel website](http://laravel.com/docs).
-
-### Contributing To Laravel
-
-**All issues and pull requests should be filed on the [laravel/framework](http://github.com/laravel/framework) repository.**
-
-### License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+* Edit some view files to make them look less lame.
+* Add validation rules to the `insert` model function to make your app more secure. Learn more about validation [here](http://daylerees.com/codebright/validation).
+* Create new model/controller/views to add the functionality to edit or delete to-do items.
+* Learn more specifically about Laravel at [laravel.com](http://laravel.com)
