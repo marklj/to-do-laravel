@@ -23,8 +23,16 @@ class ToDoController extends BaseController {
     // Individual todo item page
     public function detail($id)
     {
-        // Get the todo item from the model based on the id passed to this controller function
-        $todo = $this->todo_model->find($id);
+        try
+        {
+            // Get the todo item from the model based on the id passed to this controller function
+            $todo = $this->todo_model->find($id);
+        }
+        catch(TodoNotFoundException $e)
+        {
+            // If there is no todo item with the given ID, then catch the exception and return a "404 NotFoundHttpException"
+            App::abort(404);
+        }
 
         // Load detail_view and pass in the todo data variable
         return View::make('detail_view')->with('todo', $todo);
@@ -36,11 +44,19 @@ class ToDoController extends BaseController {
         // If the form has been submitted, insert the todo item and redirect back to main listing page
         if($_POST)
         {
-            // Run the insert function from the model to create the todo item in the database
-            $this->todo_model->insert(Input::all());
+            try
+            {
+                // Run the insert function from the model to create the todo item in the database
+                $this->todo_model->insert(Input::all());
 
-            // Redirect to the new todo item in the detail view
-            return Redirect::to('/todo');
+                // Redirect to the new todo item in the detail view
+                return Redirect::to('/todo');
+            }
+            catch(TodoValidationException $e)
+            {
+                // You can add something here to handle validation errors.
+                // For now we wont return anything and send the user back to the create_view
+            }
         }
 
         // Load create_view if not submitted

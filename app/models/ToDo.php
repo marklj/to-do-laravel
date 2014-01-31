@@ -13,7 +13,13 @@ class ToDo extends BaseModel {
     {
         $sql = 'SELECT * FROM `todo` WHERE `id` = ?';
         
-        return DB::select($sql, [$id])[0];
+        $todo_item = DB::select($sql, [$id]);
+
+        // Throw an exception if a result was not found
+        if( ! $todo_item) throw new TodoNotFoundException;
+
+        // Else return the item
+        return $todo_item[0];
     }
 
     public function insert($attributes)
@@ -24,6 +30,10 @@ class ToDo extends BaseModel {
             'INSERT into `todo` (`name`, `description`) values (?, ?)', 
             [$attributes['name'], $attributes['description']]
         );
+
+        // In the future you could try to add some validation rules here to protect against a user entering invalid data.
+        // Something like below...
+        // if($validator->fails()) throw new TodoValidationException;
     }
 
 
