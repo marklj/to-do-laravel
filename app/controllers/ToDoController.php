@@ -1,6 +1,6 @@
 <?php
 
-class ToDoController extends BaseController {
+class ToDoController extends Controller {
 
     protected $todo_model;
 
@@ -41,7 +41,7 @@ class ToDoController extends BaseController {
     // Todo item creation view
     public function create()
     {
-        // If the form has been submitted, insert the todo item and redirect back to main listing page
+        // If the form has been submitted (via POST), insert the todo item and redirect back to main listing page
         if($_POST)
         {
             try

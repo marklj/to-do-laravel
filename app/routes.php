@@ -1,5 +1,7 @@
 <?php
 
+// Both of these routes go to the same controller function
+Route::get('/', 'ToDoController@listing');
 Route::get('todo', 'ToDoController@listing');
 
 Route::get('todo/{id}', 'ToDoController@detail')->where('id', '[0-9]+');
